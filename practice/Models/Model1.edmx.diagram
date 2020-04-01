@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9042f7b1e949411aa5114aee3a813ee2" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjectExampleModel.Driver" Width="1.5" PointX="2.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectExampleModel.Sibling" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectExampleModel.SiblingGroup" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectExampleModel.UnavailableDate" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectExampleModel.Visit" Width="1.5" PointX="5.875" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="ProjectExampleModel.FK__Visit__DriverId__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectExampleModel.FK__Sibling__GroupId__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectExampleModel.FK__Unavailab__Sibli__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectExampleModel.FK__Visit__GroupId__3C69FB99" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

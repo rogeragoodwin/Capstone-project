@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectExampleModelStoreContainer" CdmEntityContainer="ProjectExampleEntities">
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="ProjectExampleModel.Driver">
+        <MappingFragment StoreEntitySet="Driver">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Siblings">
+      <EntityTypeMapping TypeName="ProjectExampleModel.Sibling">
+        <MappingFragment StoreEntitySet="Sibling">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SiblingGroups">
+      <EntityTypeMapping TypeName="ProjectExampleModel.SiblingGroup">
+        <MappingFragment StoreEntitySet="SiblingGroup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnavailableDates">
+      <EntityTypeMapping TypeName="ProjectExampleModel.UnavailableDate">
+        <MappingFragment StoreEntitySet="UnavailableDate">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SiblingId" ColumnName="SiblingId" />
+          <ScalarProperty Name="Busydate" ColumnName="Busydate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Visits">
+      <EntityTypeMapping TypeName="ProjectExampleModel.Visit">
+        <MappingFragment StoreEntitySet="Visit">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="VisitStart" ColumnName="VisitStart" />
+          <ScalarProperty Name="VisitEnd" ColumnName="VisitEnd" />
+          <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

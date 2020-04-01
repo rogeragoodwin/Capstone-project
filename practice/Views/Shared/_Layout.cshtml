@@ -1,0 +1,119 @@
+﻿<!DOCTYPE HTML>
+
+<html>
+<head>
+    <title>Sibling Visit</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+
+    <!--[if lte IE 8]><script src="~/Scripts/html5shiv.js"></script> <![endif]-->
+    <link rel="stylesheet" href="~/content/bootstrap.min.css">
+		<link rel="stylesheet" href="~/css/calendar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script src="~/Scripts/skel.min.js"></script>
+    <script src="~/Scripts/skel-panels.min.js"></script>
+    <script src="~/Scripts/init.js"></script>
+
+    
+    
+    <link href="~/Content/skel-noscript.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/style-desktop.css" rel="stylesheet" />
+
+
+</head>
+<body class="homepage">
+
+    <!-- Header -->
+    <div id="header">
+        <div class="container">
+
+            <!-- Logo -->
+            <div id="logo">
+                <h1><a href="/">Sibling Visit</a></h1>
+            </div>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    
+                    <li>@Html.ActionLink("Calendar", "calendar", "Home")</li>
+                   
+                    @Html.Partial("_LoginPartial")
+
+                </ul>
+                
+
+            </nav>
+
+        </div>
+    </div>
+
+    <div id="">&nbsp;</div>
+
+    <div id="featured">
+        <div class="container">
+            <div class="row">
+
+                @RenderBody()
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <div id="marketing">
+        <div class="container">
+            <div class="row">
+                <div class="3u">
+                    <section>
+
+                        <img src="~/Images/Foster.jpg" width="300" height="400" />
+
+
+                    </section>
+                </div>
+                <div class="3u">
+                    <section>
+
+                        <img src="~/Images/aplace.jpg" width="300" height="200" />
+
+                    </section>
+                </div>
+                <div class="6u">
+                    <section>
+
+                        <img src="~/Images/30.jpg" width="300" height="400" />
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="container">
+            <div class="row">
+                <div class="8u">
+
+                </div>
+                <div class="4u">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div id="copyright">
+        <div class="container">
+            Design: <a href="https://templated.co">TEMPLATED</a> Images: <a href="https://unsplash.com">Unsplash</a> (<a href="https://unsplash.com/cc0">CC0</a>)
+        </div>
+    </div>
+    <script type="text/javascript" src="~/scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/components/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="~/js/calendar.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

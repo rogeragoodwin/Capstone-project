@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectExampleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Visits" Relationship="Self.FK__Visit__DriverId__3B75D760" FromRole="Driver" ToRole="Visit" />
+  </EntityType>
+  <EntityType Name="Sibling">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GroupId" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="SiblingGroup" Relationship="Self.FK__Sibling__GroupId__33D4B598" FromRole="Sibling" ToRole="SiblingGroup" />
+    <NavigationProperty Name="UnavailableDates" Relationship="Self.FK__Unavailab__Sibli__38996AB5" FromRole="Sibling" ToRole="UnavailableDate" />
+  </EntityType>
+  <EntityType Name="SiblingGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Siblings" Relationship="Self.FK__Sibling__GroupId__33D4B598" FromRole="SiblingGroup" ToRole="Sibling" />
+    <NavigationProperty Name="Visits" Relationship="Self.FK__Visit__GroupId__3C69FB99" FromRole="SiblingGroup" ToRole="Visit" />
+  </EntityType>
+  <EntityType Name="UnavailableDate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SiblingId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Busydate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Sibling" Relationship="Self.FK__Unavailab__Sibli__38996AB5" FromRole="UnavailableDate" ToRole="Sibling" />
+  </EntityType>
+  <EntityType Name="Visit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupId" Type="Int32" Nullable="false" />
+    <Property Name="VisitStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="VisitEnd" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DriverId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Driver" Relationship="Self.FK__Visit__DriverId__3B75D760" FromRole="Visit" ToRole="Driver" />
+    <NavigationProperty Name="SiblingGroup" Relationship="Self.FK__Visit__GroupId__3C69FB99" FromRole="Visit" ToRole="SiblingGroup" />
+  </EntityType>
+  <Association Name="FK__Visit__DriverId__3B75D760">
+    <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+    <End Role="Visit" Type="Self.Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Driver">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="DriverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sibling__GroupId__33D4B598">
+    <End Role="SiblingGroup" Type="Self.SiblingGroup" Multiplicity="1" />
+    <End Role="Sibling" Type="Self.Sibling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SiblingGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sibling">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Unavailab__Sibli__38996AB5">
+    <End Role="Sibling" Type="Self.Sibling" Multiplicity="1" />
+    <End Role="UnavailableDate" Type="Self.UnavailableDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sibling">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UnavailableDate">
+        <PropertyRef Name="SiblingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Visit__GroupId__3C69FB99">
+    <End Role="SiblingGroup" Type="Self.SiblingGroup" Multiplicity="1" />
+    <End Role="Visit" Type="Self.Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SiblingGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectExampleEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Drivers" EntityType="Self.Driver" />
+    <EntitySet Name="Siblings" EntityType="Self.Sibling" />
+    <EntitySet Name="SiblingGroups" EntityType="Self.SiblingGroup" />
+    <EntitySet Name="UnavailableDates" EntityType="Self.UnavailableDate" />
+    <EntitySet Name="Visits" EntityType="Self.Visit" />
+    <AssociationSet Name="FK__Visit__DriverId__3B75D760" Association="Self.FK__Visit__DriverId__3B75D760">
+      <End Role="Driver" EntitySet="Drivers" />
+      <End Role="Visit" EntitySet="Visits" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sibling__GroupId__33D4B598" Association="Self.FK__Sibling__GroupId__33D4B598">
+      <End Role="SiblingGroup" EntitySet="SiblingGroups" />
+      <End Role="Sibling" EntitySet="Siblings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Unavailab__Sibli__38996AB5" Association="Self.FK__Unavailab__Sibli__38996AB5">
+      <End Role="Sibling" EntitySet="Siblings" />
+      <End Role="UnavailableDate" EntitySet="UnavailableDates" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Visit__GroupId__3C69FB99" Association="Self.FK__Visit__GroupId__3C69FB99">
+      <End Role="SiblingGroup" EntitySet="SiblingGroups" />
+      <End Role="Visit" EntitySet="Visits" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
